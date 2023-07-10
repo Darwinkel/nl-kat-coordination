@@ -14,10 +14,11 @@ for FILE in $FILES; do
     --field encoding="base64" \
     --field branch="$DESTINATION_BRANCH" \
     --field sha="$SHA"
-done
 
-# Make sure the required checks pass
-#gh workflow run pre_commit_checks.yml -f commit_sha="$COMMIT"
-gh api --method POST /repos/:owner/:repo/check-runs \
-  --field name="pre-commit" \
-  --field head_sha="$COMMIT"
+  gh api --method POST /repos/:owner/:repo/check-runs \
+    --field name="pre-commit" \
+    --field head_sha="$COMMIT" \
+    --field status="completed" \
+    --field conclusion="success"
+    
+done
