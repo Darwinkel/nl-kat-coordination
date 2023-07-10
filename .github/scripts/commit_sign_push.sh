@@ -16,4 +16,4 @@ for FILE in $FILES; do
 done
 
 # Make sure the required checks pass
-gh workflow run pre_commit_checks.yml --ref main
+gh workflow run pre_commit_checks.yml --ref "$DESTINATION_BRANCH"
