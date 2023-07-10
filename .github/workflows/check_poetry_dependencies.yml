@@ -32,11 +32,11 @@ jobs:
         run: make poetry-dependencies
 
       - name: Check if there are any changed files
-        if: ${{ github.actor == 'dependabot[bot]' }}
+        if: ${{ github.actor != 'dependabot[bot]' }}
         run: git diff --exit-code
 
       - name: Commit, sign, and push changes
-        if: ${{ github.actor != 'dependabot[bot]' }}
+        if: ${{ github.actor == 'dependabot[bot]' }}
         run: sh .github/scripts/commit_sign_push.sh
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
