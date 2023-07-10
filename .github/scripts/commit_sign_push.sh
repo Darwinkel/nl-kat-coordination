@@ -7,13 +7,12 @@ FILES=$(git diff --name-only)
 for FILE in $FILES; do
   CONTENT=$(base64 -i "$FILE")
   SHA=$(git rev-parse "$DESTINATION_BRANCH":"$FILE")
-  JSON=$(gh api --method PUT /repos/:owner/:repo/contents/"$FILE" \
+  COMMIT=$(gh api --method PUT /repos/:owner/:repo/contents/"$FILE" \
     --field message="Update $FILE" \
     --field content="$CONTENT" \
     --field encoding="base64" \
     --field branch="$DESTINATION_BRANCH" \
-    --field sha="$SHA")
-  COMMIT=$(echo "$JSON" | jq -r '.commit.sha')
+    --field sha="$SHA" | jq -r '.commit.sha')
   
   gh api --method POST /repos/:owner/:repo/check-runs \
     --field name="pre-commit" \
