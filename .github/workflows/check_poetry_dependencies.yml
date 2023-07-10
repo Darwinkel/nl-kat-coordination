@@ -13,6 +13,7 @@ jobs:
       # added or changed files to the repository.
       contents: write
       actions: write
+      checks: write
 
     runs-on: ubuntu-latest
     steps:
