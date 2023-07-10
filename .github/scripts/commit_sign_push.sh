@@ -3,6 +3,7 @@
 #GITHUB_TOKEN should be ${{ secrets.GITHUB_TOKEN }}
 #DESTINATION_BRANCH should be ${{ github.ref }}
 
+COMMIT=$(git rev-parse HEAD)
 FILES=$(git diff --name-only)
 for FILE in $FILES; do
   CONTENT=$(base64 -i "$FILE")
@@ -16,4 +17,4 @@ for FILE in $FILES; do
 done
 
 # Make sure the required checks pass
-gh workflow run pre_commit_checks.yml --ref "$DESTINATION_BRANCH"
+gh workflow run pre_commit_checks.yml --ref "$COMMIT"
