@@ -17,4 +17,4 @@ for FILE in $FILES; do
 done
 
 # Make sure the required checks pass
-gh workflow run pre_commit_checks.yml --ref "$COMMIT"
+gh workflow run pre_commit_checks.yml -f commit_sha="$COMMIT"
