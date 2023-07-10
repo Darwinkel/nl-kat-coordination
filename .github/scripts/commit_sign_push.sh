@@ -14,3 +14,6 @@ for FILE in $FILES; do
     --field branch="$DESTINATION_BRANCH" \
     --field sha="$SHA"
 done
+
+# Make sure the required checks pass
+gh workflow run pre_commit_checks.yml --ref "$DESTINATION_BRANCH"
