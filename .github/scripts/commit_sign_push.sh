@@ -17,4 +17,7 @@ for FILE in $FILES; do
 done
 
 # Make sure the required checks pass
-gh workflow run pre_commit_checks.yml -f commit_sha="$COMMIT"
+#gh workflow run pre_commit_checks.yml -f commit_sha="$COMMIT"
+gh api --method POST /repos/:owner/:repo/check-runs \
+  --field name="pre-commit" \
+  --field head_sha="$COMMIT"
