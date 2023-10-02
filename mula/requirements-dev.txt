@@ -796,7 +796,7 @@ sqlalchemy==1.4.48 ; python_version >= "3.8" and python_version < "4.0" \
 starlette==0.25.0 ; python_version >= "3.8" and python_version < "4.0" \
     --hash=sha256:774f1df1983fd594b9b6fb3ded39c2aa1979d10ac45caac0f4255cbe2acb8628 \
     --hash=sha256:854c71e73736c429c2bdb07801f2c76c9cba497e7c3cf4988fde5e95fe4cdb3c
-tomli==2.0.1 ; python_version >= "3.8" and python_version < "3.11" \
+tomli==2.0.1 ; python_version >= "3.8" and python_full_version <= "3.11.0a6" \
     --hash=sha256:939de3e7a6161af0c887ef91b7d41a53e7c5a1ca976325f429cb46ea9bc30ecc \
     --hash=sha256:de526c12914f0c550d15924c62d72abc48d6fe7364aa87328337a31007fe8a4f
 tomlkit==0.11.8 ; python_version >= "3.8" and python_version < "4.0" \
